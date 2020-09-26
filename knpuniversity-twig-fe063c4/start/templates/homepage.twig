@@ -1,0 +1,49 @@
+{# This is a Twig-comment #}
+
+{# {{ dump(products) }} #}
+
+<div class="hero-unit">
+    <h1>{{ pageData.title }}</h1>
+    <p>
+        {{ pageData.summary }}
+    </p>
+
+    {% if pageData.hasSale %}
+    <div class="sale-ends-at">
+        Sale Ends: {{ saleEndsAt|date('D M jS ga') }}
+    </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ products.0 }}
+    {{ products[random(4)] }}
+</div>
+
+<div class="row">
+    {% for product in products %}
+        <div class="span4">
+            <h2>{{ product }}</h2>
+
+            {#<div class="price">
+                {{ random() }}
+
+                {% set random_number = random(10)/100|number_format(2) %}
+                <div>Price: {{ random_number }}</div>
+                {% if random_number < 5 %}
+                    <div>Now, this is some cheap swag!</div>
+                {% endif %}
+            </div>#}
+        </div>
+    {% endfor %}
+
+    {% if products|length == 0 %}
+        <div class="alert alert-error span12">
+            Oh now! We're all out of super-awesome penguin clothes!
+        </div>
+    {% endif %}
+</div>
+
+{#<div>
+    &copy; {{ 'now'|date('Y')}}
+</div>#}
